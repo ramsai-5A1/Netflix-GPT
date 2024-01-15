@@ -1,9 +1,10 @@
 import './App.css'
+import Body from './components/Body';
 
 const App = () => {
   return (
-    <div className='bg-blue-300'>
-      Hello world
+    <div className=''>
+      <Body/>
     </div>
   )
 };
