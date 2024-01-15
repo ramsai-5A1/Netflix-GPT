@@ -9,14 +9,13 @@ const Login = () => {
 
     const [isLoginForm, setIsLoginForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        console.log(email.current.value);
-        console.log(password.current.value);
-        const result = checkValidData(email.current.value, password.current.value);
+        const result = checkValidData(email.current.value, password.current.value, (name && name.current) ? name.current.value : null);
         setErrorMessage(result);
     }
 
@@ -32,7 +31,7 @@ const Login = () => {
 
             <form onSubmit={handleFormSubmit} className="rounded-sm w-3/12 absolute text-white bg-opacity-70 p-12 bg-black my-36 mx-auto left-0 right-0">
                 <h1 className=" font-bold text-3xl py-4">{isLoginForm ? buttonList[0] : buttonList[1]}</h1>
-                {!isLoginForm && <input className="rounded-sm p-4 my-4 w-full bg-slate-800" type="text" placeholder="Enter your full-name"/>}
+                {!isLoginForm && <input ref={name} className="rounded-sm p-4 my-4 w-full bg-slate-800" type="text" placeholder="Enter your full-name"/>}
                 <input ref={email} className="rounded-sm p-4 my-4 w-full bg-slate-800" type="text" placeholder="Email or phone number"/>
                 <input ref={password} className="rounded-sm p-4 my-4 w-full bg-slate-800" type="password" placeholder="Password"/>
                 <p className="text-red-600 font-bold">{errorMessage}</p>
