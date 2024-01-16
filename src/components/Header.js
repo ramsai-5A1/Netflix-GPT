@@ -36,11 +36,13 @@ const Header = () => {
                 } else {
                     navigate("/");
                     dispatch(removeUserData());
+                    sessionStorage.removeItem(USER_LOGIN_OBJ);
                 }
             })
             .catch((err) => {
                 navigate("/");
                 dispatch(removeUserData());
+                sessionStorage.removeItem(USER_LOGIN_OBJ);
             });
         } else {
             navigate("/");
