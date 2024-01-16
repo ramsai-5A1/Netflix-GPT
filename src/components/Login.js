@@ -3,7 +3,7 @@ import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 import { BACKEND_LOGIN_URL, BACKEND_SIGNUP_URL } from "../utils/constants";
 import {useDispatch} from "react-redux"
-import { addInitialData } from "../utils/UserSlice";
+import { addUserData } from "../utils/UserSlice";
 
 const buttonList = ["Sign In", "Sign Up"]
 const messagesList = ["New to Netflix? Sign up now", "Already had an account ? Login now"]
@@ -32,7 +32,7 @@ const Login = () => {
         }
         setErrorMessage("");
         console.log(data);
-        dispatch(addInitialData(data));
+        dispatch(addUserData(data));
     }
 
     const handleFormSubmit = (e) => {
