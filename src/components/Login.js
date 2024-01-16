@@ -24,6 +24,11 @@ const Login = () => {
             }
         });
         const data = await response.json();
+        if(!data.success) {
+            setErrorMessage(data.message);
+        }
+        setErrorMessage("");
+        console.log(data);
     }
 
     const handleFormSubmit = (e) => {
