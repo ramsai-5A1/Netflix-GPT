@@ -20,7 +20,11 @@ const Login = () => {
     const password = useRef(null);
 
     const getResponseFromBackendForSignup = async () => {
-        const user = {email: email.current.value, password: password.current.value};
+        const user = {
+            email: email.current.value, 
+            password: password.current.value,
+            fullName: (name && name.current) ? name.current.value : null
+        };
         const response = await fetch(!isLoginForm ? BACKEND_SIGNUP_URL : BACKEND_LOGIN_URL, {
             method: 'POST',
             body: JSON.stringify(user),
