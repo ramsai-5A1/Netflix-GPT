@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
+import { BACKEND_SIGNUP_URL } from "../utils/constants";
 
 const buttonList = ["Sign In", "Sign Up"]
 const messagesList = ["New to Netflix? Sign up now", "Already had an account ? Login now"]
@@ -13,10 +14,27 @@ const Login = () => {
     const email = useRef(null);
     const password = useRef(null);
 
+    const getResponseFromBackendForSignup = async () => {
+        const user = {email: email.current.value, password: password.current.value};
+        const response = await fetch(BACKEND_SIGNUP_URL, {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        });
+        const data = await response.json();
+        console.log(data);
+    }
+
     const handleFormSubmit = (e) => {
         e.preventDefault();
         const result = checkValidData(email.current.value, password.current.value, (name && name.current) ? name.current.value : null);
-        setErrorMessage(result);
+        if(result) {
+            setErrorMessage(result);
+            return;
+        }
+        getResponseFromBackendForSignup();
     }
 
     return (
