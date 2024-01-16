@@ -1,7 +1,7 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
-import { BACKEND_LOGIN_URL, BACKEND_SIGNUP_URL } from "../utils/constants";
+import { BACKEND_LOGIN_URL, BACKEND_SIGNUP_URL, USER_LOGIN_OBJ } from "../utils/constants";
 import {useDispatch} from "react-redux"
 import { addUserData } from "../utils/UserSlice";
 import { useNavigate } from "react-router-dom";
@@ -21,8 +21,8 @@ const Login = () => {
 
     const getResponseFromBackendForSignup = async () => {
         const user = {
-            email: email.current.value, 
-            password: password.current.value,
+            email: (email && email.current) ? email.current.value : null, 
+            password: (password && password.current) ? password.current.value : null,
             fullName: (name && name.current) ? name.current.value : null
         };
         const response = await fetch(!isLoginForm ? BACKEND_SIGNUP_URL : BACKEND_LOGIN_URL, {
@@ -37,8 +37,8 @@ const Login = () => {
             setErrorMessage(data.message);
         }
         setErrorMessage("");
-        console.log(data);
-        dispatch(addUserData(data));
+        dispatch(addUserData(data.data));
+        sessionStorage.setItem(USER_LOGIN_OBJ, JSON.stringify(data.data));
         navigate('/browse');
     }
 

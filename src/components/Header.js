@@ -1,17 +1,57 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { removeUserData } from "../utils/UserSlice";
+import { addUserData, removeUserData } from "../utils/UserSlice";
+import { BACKEND_IS_TOKEN_VALID_URL, USER_LOGIN_OBJ } from "../utils/constants";
+import { useEffect, useMemo } from "react";
+
+const hitBackendToVerifyToken = async (obj) => {
+    if (obj === undefined || obj.token === undefined) {
+        return {status: false};
+    }
+    const rawResponse = await fetch(BACKEND_IS_TOKEN_VALID_URL, {
+        method: "POST",
+        headers: {
+            "Authorization": "Bearer " + obj.token
+        }
+    });
+    const response = await rawResponse.json();
+    return response;
+}
 
 const Header = () => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const userData = useSelector((store) => store.user);
+    
+    useEffect(() => {
+        const rawData = sessionStorage.getItem(USER_LOGIN_OBJ);
+        if (rawData) {
+            const mainData = JSON.parse(rawData);
+            const response = hitBackendToVerifyToken(mainData);
+            response.then(data => {
+                if (data && data.status === true) {
+                    dispatch(addUserData(mainData));
+                    navigate("/browse");
+                } else {
+                    navigate("/");
+                    dispatch(removeUserData());
+                }
+            })
+            .catch((err) => {
+                navigate("/");
+                dispatch(removeUserData());
+            });
+        } else {
+            navigate("/");
+            dispatch(removeUserData());
+        }
+    }, []);
 
     const handleSignOut = () => {
         navigate("/");
         dispatch(removeUserData());
-        console.log("Logged out successfully");
+        sessionStorage.removeItem(USER_LOGIN_OBJ);
     }
 
     return (
@@ -22,7 +62,7 @@ const Header = () => {
                 alt="logo"
             />
             {userData && <div className="flex p-2 justify-between space-x-2">
-                <span className="bg-red-500 w-auto h-10 rounded-lg shadow-lg p-2">{userData.data.fullName}</span>
+                <span className="bg-red-500 w-auto h-10 rounded-lg shadow-lg p-2">{ userData.fullName }</span>
                 <img
                     className="w-12 h-12"
                     alt="smilie-logo"
