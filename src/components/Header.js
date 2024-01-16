@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUserData, removeUserData } from "../utils/UserSlice";
-import { BACKEND_IS_TOKEN_VALID_URL, USER_LOGIN_OBJ } from "../utils/constants";
+import { BACKEND_IS_TOKEN_VALID_URL, NETFLIX_LOGO, USER_LOGIN_OBJ } from "../utils/constants";
 import { useEffect, useMemo } from "react";
 
 const hitBackendToVerifyToken = async (obj) => {
@@ -60,7 +60,7 @@ const Header = () => {
         <div className="z-10 w-screen py-2 px-8 bg-gradient-to-b from-black absolute flex justify-between">
             <img
                 className="w-48"
-                src="https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
+                src={NETFLIX_LOGO}
                 alt="logo"
             />
             {userData && <div className="flex p-2 justify-between space-x-2">
