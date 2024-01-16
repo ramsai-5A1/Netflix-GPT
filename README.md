@@ -8,6 +8,8 @@
 - Sign up form
 - Form validation
 - useRef Hook
+- Added Backend for 2 apis (login and signup using jwt and express server)
+- Then added redux store and stored the data (token info) in redux user-slice
 
 
 # Features

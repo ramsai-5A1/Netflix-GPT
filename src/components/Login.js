@@ -4,12 +4,14 @@ import { checkValidData } from "../utils/validate";
 import { BACKEND_LOGIN_URL, BACKEND_SIGNUP_URL } from "../utils/constants";
 import {useDispatch} from "react-redux"
 import { addUserData } from "../utils/UserSlice";
+import { useNavigate } from "react-router-dom";
 
 const buttonList = ["Sign In", "Sign Up"]
 const messagesList = ["New to Netflix? Sign up now", "Already had an account ? Login now"]
 
 const Login = () => {
 
+    const navigate = useNavigate();
     const [isLoginForm, setIsLoginForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
     const dispatch = useDispatch();
@@ -33,6 +35,7 @@ const Login = () => {
         setErrorMessage("");
         console.log(data);
         dispatch(addUserData(data));
+        navigate('/browse');
     }
 
     const handleFormSubmit = (e) => {
