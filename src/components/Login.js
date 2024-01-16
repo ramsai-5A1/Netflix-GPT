@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 import { BACKEND_LOGIN_URL, BACKEND_SIGNUP_URL } from "../utils/constants";
+import {useDispatch} from "react-redux"
+import { addInitialData } from "../utils/UserSlice";
 
 const buttonList = ["Sign In", "Sign Up"]
 const messagesList = ["New to Netflix? Sign up now", "Already had an account ? Login now"]
@@ -10,6 +12,7 @@ const Login = () => {
 
     const [isLoginForm, setIsLoginForm] = useState(true);
     const [errorMessage, setErrorMessage] = useState(null);
+    const dispatch = useDispatch();
     const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
@@ -29,6 +32,7 @@ const Login = () => {
         }
         setErrorMessage("");
         console.log(data);
+        dispatch(addInitialData(data));
     }
 
     const handleFormSubmit = (e) => {

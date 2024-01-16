@@ -1,10 +1,14 @@
 import { RouterProvider } from "react-router-dom";
 import AppRoutes from "../utils/AppRoutes";
+import { Provider } from "react-redux";
+import AppDataStore from "../utils/AppDataStore";
 
 const Body = () => {
     return (
         <div>
-            <RouterProvider router={AppRoutes}/>
+            <Provider store={AppDataStore}>
+                <RouterProvider router={AppRoutes}/>
+            </Provider>
         </div>
     )
 };
