@@ -6,12 +6,14 @@ import { BACKEND_MOVIES_LIST_URL } from "../utils/constants";
 import useNowPlayingMovies from "../custom-hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import usePopularMovies from "../custom-hooks/usePopularMovies";
 
 const Browse = () => {
 
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
     useNowPlayingMovies();
+    usePopularMovies();
     
     useEffect(() => {
         if(!user) {
