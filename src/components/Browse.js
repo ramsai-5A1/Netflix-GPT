@@ -4,6 +4,8 @@ import {useSelector} from "react-redux"
 import { useEffect } from "react";
 import { BACKEND_MOVIES_LIST_URL } from "../utils/constants";
 import useNowPlayingMovies from "../custom-hooks/useNowPlayingMovies";
+import MainContainer from "./MainContainer";
+import SecondaryContainer from "./SecondaryContainer";
 
 const Browse = () => {
 
@@ -19,9 +21,10 @@ const Browse = () => {
     
 
     return (
-        <div className="">
+        <div className="flex flex-col">
             <Header/> 
-            
+            <MainContainer/>
+            <SecondaryContainer/>
         </div>
     )
 };
