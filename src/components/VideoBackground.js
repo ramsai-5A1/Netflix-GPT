@@ -1,18 +1,14 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import useTrailerVideo from "../custom-hooks/useTrailerVideo";
 
-const VideoBackground = () => {  
+const VideoBackground = ({id}) => {  
     const trailer = useSelector((store) => store.movies?.trailerVideo);
-    useTrailerVideo();
-
-    useEffect(() => {
-    }, []);
+    useTrailerVideo(id);
 
     if (!trailer) {
         return <h1>Loading....</h1>
     }
-
+    
     return (
         <div>
             <iframe 

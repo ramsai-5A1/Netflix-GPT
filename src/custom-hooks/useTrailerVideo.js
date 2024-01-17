@@ -3,7 +3,7 @@ import { API_OPTIONS, BACKEND_TRAILERS_DATA_URL, USER_LOGIN_OBJ } from "../utils
 import { useDispatch } from "react-redux";
 import { addTrailerVideo } from "../utils/MoviesSlice";
 
-const useTrailerVideo = () => {
+const useTrailerVideo = (movieId) => {
     const dispatch = useDispatch();
 
     const fetchDataFromBackend = async () => {
@@ -16,8 +16,8 @@ const useTrailerVideo = () => {
         const data = await rawData.json();
         //Todo: Collect respective trailer and then store it into the store
         if (data && data.trailersData) {
-            const index = Math.floor(Math.random() * data.trailersData.length);
-            dispatch(addTrailerVideo(data.trailersData[index]));
+            const trailer = data.trailersData.filter((video) => video.id == movieId);
+            dispatch(addTrailerVideo(trailer[0]));
         }
     }
 

@@ -8,13 +8,13 @@ const MainContainer = () => {
     if (!movies) {
         return;
     }
-    //const oneMainMovie = movies[Math.floor(Math.random() * movies.length)];
-    const oneMainMovie = movies[0];
-    const { title, description } = oneMainMovie;
+    const oneMainMovie = movies[Math.floor(Math.random() * movies.length)];
+    //const oneMainMovie = movies[0];
+    const { id, title, description } = oneMainMovie;
     return (
         <div>
             <VideoTitle title={title} description={description}/>
-            <VideoBackground />
+            <VideoBackground id={id} />
         </div>
     )
 };
