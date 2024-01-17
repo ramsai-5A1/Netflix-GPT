@@ -1,25 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import {useSelector, useDispatch} from "react-redux"
+import {useSelector} from "react-redux"
 import { useEffect } from "react";
 import { BACKEND_MOVIES_LIST_URL } from "../utils/constants";
-import { addMovies } from "../utils/MoviesSlice";
+import useNowPlayingMovies from "../custom-hooks/useNowPlayingMovies";
 
 const Browse = () => {
 
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
-    const dispatch = useDispatch();
-
-    const getDataFromIMDB = async () => {
-        const rawData = await fetch(BACKEND_MOVIES_LIST_URL);
-        const data = await rawData.json();
-        console.log(data);
-        dispatch(addMovies(data));
-    }
-
+    useNowPlayingMovies();
+    
     useEffect(() => {
-        getDataFromIMDB();
         if(!user) {
             navigate("/");
         }
