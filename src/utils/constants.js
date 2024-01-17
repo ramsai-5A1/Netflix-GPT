@@ -5,6 +5,8 @@ export const BACKEND_LOGIN_URL = "http://localhost:3001/api/login";
 export const BACKEND_IS_TOKEN_VALID_URL = "http://localhost:3001/api/isTokenValid";
 export const BACKEND_MOVIES_LIST_URL = "https://api.sampleapis.com/movies/drama";
 export const BACKEND_MOVIES_DATA_URL = "http://localhost:3001/api/getMoviesData";
+export const BACKEND_TRAILERS_DATA_URL = "http://localhost:3001/api/getTrailersData";
+
 
 //constants
 export const USER_LOGIN_OBJ = "userLoginObject";
