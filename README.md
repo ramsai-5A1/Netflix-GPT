@@ -17,6 +17,7 @@
 - Fetch Data for Trailer video and store it in redux-store
 - Embedded youtube video and made it autoplay and mute
 - Tailwind classes to make MainContainer awesome
+- Build SecondaryComponent
 - 
 
 
