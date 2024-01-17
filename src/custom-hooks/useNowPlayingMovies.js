@@ -17,7 +17,7 @@ const useNowPlayingMovies = () => {
             }
         });
         const data = await rawData.json();
-        dispatch(addMovies(data));
+        dispatch(addMovies(data.videosData));
     }
 
     useEffect(() => {
