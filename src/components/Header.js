@@ -81,7 +81,7 @@ const Header = () => {
                             {SUPPORTED_LAUNGUAGES.map((element) => <option key={element.identifier} value={element.identifier}>{element.name}</option>)}
                         </select>
                     )}
-                    <button onClick={handleGptSearchClick} className="p-2 rounded-lg h-10 shadow-lg  mx-2 my-2 tex-white bg-violet-600">GPT search</button>
+                    <button onClick={handleGptSearchClick} className="p-2 rounded-lg h-10 shadow-lg  mx-2 my-2 tex-white bg-violet-600">{isGptSearchTrue ? "Home Page" : "GPT search"}</button>
                     <span className="bg-green-600 w-auto h-10 rounded-lg shadow-lg p-2">{ userData.fullName }</span>
                     <img
                         className="w-12 h-12"
