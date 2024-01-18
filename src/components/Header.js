@@ -68,9 +68,9 @@ const Header = () => {
     }
 
     return (
-        <div className="fixed z-30 w-screen py-2 px-8 bg-gradient-to-b from-black  flex justify-between">
+        <div className="fixed z-30 w-screen py-2 px-8 bg-gradient-to-b from-black flex flex-col md:flex-row justify-between">
             <img
-                className="w-48"
+                className="w-48 mx-auto md:mx-0"
                 src={NETFLIX_LOGO}
                 alt="logo"
             />
@@ -84,7 +84,7 @@ const Header = () => {
                     <button onClick={handleGptSearchClick} className="p-2 rounded-lg h-10 shadow-lg  mx-2 my-2 tex-white bg-violet-600">{isGptSearchTrue ? "Home Page" : "GPT search"}</button>
                     <span className="bg-green-600 w-auto h-10 rounded-lg shadow-lg p-2">{ userData.fullName }</span>
                     <img
-                        className="w-12 h-12"
+                        className="md:w-12 md:h-12 w-0 h-0"
                         alt="smilie-logo"
                         src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg"
                     />

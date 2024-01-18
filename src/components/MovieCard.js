@@ -4,7 +4,7 @@ const MovieCard = ({movie}) => {
 
     return (
         <div>
-            <div className="w-[200px] h-[300px] rounded-full shadow-lg">
+            <div className="md:w-[200px]  w-36  rounded-full shadow-lg">
                 <img
                     alt="thumbNail"
                     src={thumbnailUrl}

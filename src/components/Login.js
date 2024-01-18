@@ -57,18 +57,19 @@ const Login = () => {
             <Header/>
             <div className="absolute">
                 <img
+                    className="h-screen"
                     alt="background"
                     src={LOGIN_BACKGROUND_IMAGE_URL}
                 />
             </div>
 
-            <form onSubmit={handleFormSubmit} className="rounded-sm w-3/12 absolute text-white bg-opacity-70 p-12 bg-black my-36 mx-auto left-0 right-0">
-                <h1 className=" font-bold text-3xl py-4">{isLoginForm ? buttonList[0] : buttonList[1]}</h1>
+            <form onSubmit={handleFormSubmit} className="rounded-sm w-3/4 md:w-3/12 absolute text-white bg-opacity-70 p-12 bg-black my-36 mx-auto left-0 right-0">
+                <h1 className=" font-bold text-xl md:text-3xl py-2 md:py-4">{isLoginForm ? buttonList[0] : buttonList[1]}</h1>
                 {!isLoginForm && <input ref={name} className="rounded-sm p-4 my-4 w-full bg-slate-800" type="text" placeholder="Enter your full-name"/>}
                 <input ref={email} className="rounded-sm p-4 my-4 w-full bg-slate-800" type="text" placeholder="Email or phone number"/>
                 <input ref={password} className="rounded-sm p-4 my-4 w-full bg-slate-800" type="password" placeholder="Password"/>
-                <p className="text-red-600 font-bold">{errorMessage}</p>
-                <button className="rounded-lg p-5 my-6 bg-red-600 w-full">{isLoginForm ? buttonList[0] : buttonList[1]}</button>
+                <p className="text-red-600 text-sm md:text-lg font-bold">{errorMessage}</p>
+                <button className="rounded-lg p-3 md:p-5 my-6 bg-red-600 w-full">{isLoginForm ? buttonList[0] : buttonList[1]}</button>
                 <div className="flex justify-between">
                     <span>Remember me</span>
                     <span>Need help?</span>
