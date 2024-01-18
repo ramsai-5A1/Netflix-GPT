@@ -2,16 +2,17 @@ import { useNavigate } from "react-router-dom";
 import Header from "./Header";
 import {useSelector} from "react-redux"
 import { useEffect } from "react";
-import { BACKEND_MOVIES_LIST_URL } from "../utils/constants";
 import useNowPlayingMovies from "../custom-hooks/useNowPlayingMovies";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
 import usePopularMovies from "../custom-hooks/usePopularMovies";
+import GPTSearch from "./GPTSearch";
 
 const Browse = () => {
 
     const navigate = useNavigate();
     const user = useSelector((store) => store.user);
+    const shouldShowGpt = useSelector((store) => store.gpt.shouldShowGpt);
     useNowPlayingMovies();
     usePopularMovies();
     
@@ -25,8 +26,15 @@ const Browse = () => {
     return (
         <div className="flex flex-col">
             <Header/> 
-            <MainContainer/>
-            <SecondaryContainer/>
+            {shouldShowGpt ? (
+                <GPTSearch/>
+            ) : (
+                <>
+                    <MainContainer/>
+                    <SecondaryContainer/>
+                </>
+            )}
+            
         </div>
     )
 };

@@ -23,7 +23,7 @@
 - Backend apis for movies and trailers
 - Made browser page amazing with tailwindcss
 - usePopularMovies custom-hook
-- 
+- GPT search feature
 
 
 # Features

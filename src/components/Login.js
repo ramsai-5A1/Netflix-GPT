@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
-import { BACKEND_LOGIN_URL, BACKEND_SIGNUP_URL, USER_LOGIN_OBJ } from "../utils/constants";
+import { BACKEND_LOGIN_URL, BACKEND_SIGNUP_URL, LOGIN_BACKGROUND_IMAGE_URL, USER_LOGIN_OBJ } from "../utils/constants";
 import {useDispatch} from "react-redux"
 import { addUserData } from "../utils/UserSlice";
 import { useNavigate } from "react-router-dom";
@@ -58,7 +58,7 @@ const Login = () => {
             <div className="absolute">
                 <img
                     alt="background"
-                    src="https://wallpapers.com/images/hd/netflix-background-gs7hjuwvv2g0e9fj.jpg"
+                    src={LOGIN_BACKGROUND_IMAGE_URL}
                 />
             </div>
 

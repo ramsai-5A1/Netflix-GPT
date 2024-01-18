@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUserData, removeUserData } from "../utils/UserSlice";
 import { BACKEND_IS_TOKEN_VALID_URL, NETFLIX_LOGO, USER_LOGIN_OBJ } from "../utils/constants";
 import { useEffect, useMemo } from "react";
+import { toggleShouldShowGptVariable } from "../utils/GptSlice";
 
 const hitBackendToVerifyToken = async (obj) => {
     if (obj === undefined || obj.token === undefined) {
@@ -56,6 +57,10 @@ const Header = () => {
         sessionStorage.removeItem(USER_LOGIN_OBJ);
     }
 
+    const handleGptSearchClick = () => {
+        dispatch(toggleShouldShowGptVariable());
+    }
+
     return (
         <div className="z-10 w-screen py-2 px-8 bg-gradient-to-b from-black absolute flex justify-between">
             <img
@@ -63,15 +68,18 @@ const Header = () => {
                 src={NETFLIX_LOGO}
                 alt="logo"
             />
-            {userData && <div className="flex p-2 justify-between space-x-2">
-                <span className="bg-red-500 w-auto h-10 rounded-lg shadow-lg p-2">{ userData.fullName }</span>
-                <img
-                    className="w-12 h-12"
-                    alt="smilie-logo"
-                    src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg"
-                />
-                <button onClick={handleSignOut} className="bg-red-600 font-bold rounded-lg shadow-lg w-auto p-1 h-7">(Sign-out)</button>
-            </div>}
+            {userData && (
+                <div className="flex p-2  space-x-2">
+                    <button onClick={handleGptSearchClick} className="p-2 rounded-lg h-10 shadow-lg  mx-2 my-2 tex-white bg-violet-600">GPT search</button>
+                    <span className="bg-green-600 w-auto h-10 rounded-lg shadow-lg p-2">{ userData.fullName }</span>
+                    <img
+                        className="w-12 h-12"
+                        alt="smilie-logo"
+                        src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg"
+                    />
+                    <button onClick={handleSignOut} className="bg-red-600 font-bold rounded-lg shadow-lg w-auto p-1 h-7">(Sign-out)</button>
+                </div>
+            )}
             
         </div>
     )
