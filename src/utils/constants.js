@@ -7,7 +7,7 @@ export const BACKEND_MOVIES_LIST_URL = "https://api.sampleapis.com/movies/drama"
 export const BACKEND_MOVIES_DATA_URL = "http://localhost:3001/api/getMoviesData";
 export const BACKEND_TRAILERS_DATA_URL = "http://localhost:3001/api/getTrailersData";
 export const BACKEND_POPULAR_MOVIES_URL = "http://localhost:3001/api/getPopularMoviesData";
-
+export const BACKEND_OPENAI_SEARCH_INFO = "http://localhost:3001/api/giveMeOpenAiResults";
 
 //constants
 export const USER_LOGIN_OBJ = "userLoginObject";
