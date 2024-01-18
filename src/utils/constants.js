@@ -13,8 +13,11 @@ export const BACKEND_POPULAR_MOVIES_URL = "http://localhost:3001/api/getPopularM
 export const USER_LOGIN_OBJ = "userLoginObject";
 export const NETFLIX_LOGO = "https://cdn.cookielaw.org/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png";
 export const LOGIN_BACKGROUND_IMAGE_URL = "https://wallpapers.com/images/hd/netflix-background-gs7hjuwvv2g0e9fj.jpg";
-
-
+export const SUPPORTED_LAUNGUAGES = [
+    { identifier: "english", name: "English"},
+    { identifier: "telugu", name: "Telugu"},
+    { identifier: "hindi", name: "Hindi"}
+];
 
 
 

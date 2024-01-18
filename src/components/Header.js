@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUserData, removeUserData } from "../utils/UserSlice";
-import { BACKEND_IS_TOKEN_VALID_URL, NETFLIX_LOGO, USER_LOGIN_OBJ } from "../utils/constants";
+import { BACKEND_IS_TOKEN_VALID_URL, NETFLIX_LOGO, SUPPORTED_LAUNGUAGES, USER_LOGIN_OBJ } from "../utils/constants";
 import { useEffect, useMemo } from "react";
 import { toggleShouldShowGptVariable } from "../utils/GptSlice";
+import { changePreferredLaunguage } from "../utils/configSlice";
 
 const hitBackendToVerifyToken = async (obj) => {
     if (obj === undefined || obj.token === undefined) {
@@ -24,6 +25,7 @@ const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const userData = useSelector((store) => store.user);
+    const isGptSearchTrue = useSelector((store) => store.gpt.shouldShowGpt);
     
     useEffect(() => {
         const rawData = sessionStorage.getItem(USER_LOGIN_OBJ);
@@ -61,6 +63,10 @@ const Header = () => {
         dispatch(toggleShouldShowGptVariable());
     }
 
+    const modifyLaunguage = (event) => {
+        dispatch(changePreferredLaunguage(event.target.value));
+    }
+
     return (
         <div className="z-10 w-screen py-2 px-8 bg-gradient-to-b from-black absolute flex justify-between">
             <img
@@ -70,6 +76,11 @@ const Header = () => {
             />
             {userData && (
                 <div className="flex p-2  space-x-2">
+                    {isGptSearchTrue && (
+                        <select onChange={modifyLaunguage} className="bg-black text-white p-2 m-2 rounded-sm">
+                            {SUPPORTED_LAUNGUAGES.map((element) => <option key={element.identifier} value={element.identifier}>{element.name}</option>)}
+                        </select>
+                    )}
                     <button onClick={handleGptSearchClick} className="p-2 rounded-lg h-10 shadow-lg  mx-2 my-2 tex-white bg-violet-600">GPT search</button>
                     <span className="bg-green-600 w-auto h-10 rounded-lg shadow-lg p-2">{ userData.fullName }</span>
                     <img
