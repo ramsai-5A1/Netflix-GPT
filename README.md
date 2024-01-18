@@ -26,6 +26,10 @@
 - GPT search feature
 - GPT search bar
 - added multi-lingual feature to GPT search page
+- Gpt search api call (to local backend since openAi api didn't worked out to me)
+- memoization
+- Adding .env file (adding it to .gitignore)
+- Made our site responsive
 
 
 

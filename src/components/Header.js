@@ -75,16 +75,16 @@ const Header = () => {
                 alt="logo"
             />
             {userData && (
-                <div className="flex p-2  space-x-2">
+                <div className="flex p-2 justify-between md:space-x-2">
                     {isGptSearchTrue && (
                         <select onChange={modifyLaunguage} className="bg-black text-white p-2 m-2 rounded-sm">
                             {SUPPORTED_LAUNGUAGES.map((element) => <option key={element.identifier} value={element.identifier}>{element.name}</option>)}
                         </select>
                     )}
-                    <button onClick={handleGptSearchClick} className="p-2 rounded-lg h-10 shadow-lg  mx-2 my-2 tex-white bg-violet-600">{isGptSearchTrue ? "Home Page" : "GPT search"}</button>
-                    <span className="bg-green-600 w-auto h-10 rounded-lg shadow-lg p-2">{ userData.fullName }</span>
+                    <button onClick={handleGptSearchClick} className="p-1 rounded-lg h-7 w-auto shadow-lg  mx-2 my-2 tex-white bg-violet-600">{isGptSearchTrue ? "Home Page" : "GPT search"}</button>
+                    {/* <span className="bg-green-600 w-auto h-7 rounded-lg shadow-lg p-1">{ userData.fullName }</span> */}
                     <img
-                        className="md:w-12 md:h-12 w-0 h-0"
+                        className="md:w-12 md:h-12 hidden md:block"
                         alt="smilie-logo"
                         src="https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-dyrp6bw6adbulg5b.jpg"
                     />
