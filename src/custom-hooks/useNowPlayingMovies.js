@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import { addMovies } from "../utils/MoviesSlice";
 import { BACKEND_MOVIES_DATA_URL, USER_LOGIN_OBJ } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 const useNowPlayingMovies = () => {
 
     const dispatch = useDispatch();
+    const nowPlayingMovies = useSelector((store) => store.movies.nowPlayingMovies);
 
     const hitBackendApiToGetMoviesList = async () => {
         const sessionData = JSON.parse(sessionStorage.getItem(USER_LOGIN_OBJ));
@@ -21,7 +22,7 @@ const useNowPlayingMovies = () => {
     }
 
     useEffect(() => {
-        hitBackendApiToGetMoviesList();
+        !nowPlayingMovies && hitBackendApiToGetMoviesList();
     }, []);
 }
 
