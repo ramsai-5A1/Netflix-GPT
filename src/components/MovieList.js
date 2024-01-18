@@ -1,7 +1,6 @@
 import MovieCard from "./MovieCard";
 
 const MovieList = ({title, movies}) => {
-
     if (!movies) {
         return <h1>Loading...</h1>
     }
