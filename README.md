@@ -32,6 +32,21 @@
 - Made our site responsive
 
 
+<!-- react 2
+java 3
+aws
+springboot 2
+mariadb
+db
+kafka
+oops
+
+react 18
+why react ? why not angular ?
+nextjs (server side rendering) -->
+
+
+
 
 # Features
 
